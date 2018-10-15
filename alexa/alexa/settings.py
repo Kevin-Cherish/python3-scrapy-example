@@ -65,7 +65,8 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'alexa.pipelines.AlexaPipeline': 300,
+    # 'alexa.pipelines.AlexaPipeline': 300,
+    'alexa.pipelines.JsonPipeline': 301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -88,3 +89,7 @@ ITEM_PIPELINES = {
 # HTTPCACHE_DIR = 'httpcache'
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+
+LOG_LEVEL = 'INFO'
+FILEPATH = 'data_utf8.json'

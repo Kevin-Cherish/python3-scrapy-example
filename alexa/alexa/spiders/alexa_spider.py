@@ -32,7 +32,6 @@ class alexaSpider(CrawlSpider):
             item['url'] = site.css('a[href*=siteinfo]::attr(href)')[0].extract()
             # item['url'] = site.css('a[href*=siteinfo]::attr(href)').extract_first()
             item['name'] = site.css('a[href*=siteinfo]::text')[0].extract()
-            item['name'] = site.css('a[href*=siteinfo]::text')[0].extract()
             item['description'] = site.css('.description::text')[0].extract()
             remainder = site.css('.remainder::text')
             if remainder:
@@ -50,9 +49,9 @@ class alexaSpider(CrawlSpider):
             item = alexaCategoryItem()
             item['url'] = category.css('::attr(href)')[0].extract()
             item['name'] = category.css('::text')[0].extract()
-            # yield item
-            items.append(item)
-        return items
+            yield item
+            # items.append(item)
+        # return items
 
 
 class alexaCNSpider(CrawlSpider):
