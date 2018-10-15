@@ -1,22 +1,9 @@
-#coding: utf-8
+# coding: utf-8
 
 import re
-import json
-from urlparse import urlparse
-
 
 from scrapy.selector import Selector
-try:
-    from scrapy.spiders import Spider
-except:
-    from scrapy.spiders import BaseSpider as Spider
-from scrapy.utils.response import get_base_url
-from scrapy.spiders import CrawlSpider, Rule
-from scrapy.linkextractors import LinkExtractor as sle
-
-
-from .log import *
-
+from scrapy.spiders import CrawlSpider
 
 '''
 1. 默认取sel.css()[0]，如否则需要'__unique':False or __list:True
@@ -25,7 +12,6 @@ from .log import *
 
 
 class CommonSpider(CrawlSpider):
-
     auto_join_text = False
     ''' # css rule example:
     all_css_rules = {
@@ -101,7 +87,8 @@ class CommonSpider(CrawlSpider):
                 for i in sel.css(nk):
                     self.traversal(i, nv, item_class, item, items)
 
-    DEBUG=True
+    DEBUG = True
+
     def debug(self, sth):
         if self.DEBUG == True:
             print(sth)
@@ -120,8 +107,9 @@ class CommonSpider(CrawlSpider):
                 item[k] = _items
 
     keywords = set(['__use', '__list'])
+
     def traversal_dict(self, sel, rules, item_class, item, items, force_1_item):
-        #import pdb; pdb.set_trace()
+        # import pdb; pdb.set_trace()
         item = {}
         for k, v in rules.items():
             if type(v) != dict:
@@ -130,11 +118,11 @@ class CommonSpider(CrawlSpider):
                 if type(v) == list:
                     continue
                 self.deal_text(sel, item, force_1_item, k, v)
-                #import pdb;pdb.set_trace()
+                # import pdb;pdb.set_trace()
             else:
                 item[k] = []
                 for i in sel.css(k):
-                    #print(k, v)
+                    # print(k, v)
                     self.traversal_dict(i, v, item_class, item, item[k], force_1_item)
         items.append(item)
 
@@ -151,6 +139,7 @@ class CommonSpider(CrawlSpider):
         return items
 
     def parse_with_rules(self, response, rules, item_class, force_1_item=False):
+        # print('-----------', response)
         return self.dfs(Selector(response), rules, item_class, force_1_item)
 
     ''' # use parse_with_rules example:
