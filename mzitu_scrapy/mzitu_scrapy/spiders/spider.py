@@ -26,9 +26,7 @@ class Spider(CrawlSpider):
             default="N/A")
         meta['name'] = response.xpath("./*//div[@class='main']/div[1]/h2/text()").extract_first(default="N/A")
         meta['url'] = response.url
-        # for num in range(1, int(max_num)):
-        for num in range(1, 2):
-            # page_url 为每张图片所在的页面地址
+        for num in range(1, int(max_num)):
             page_url = response.url + '/' + str(num)
             self.logger.warning(page_url)
             yield Request(page_url, callback=self.img_url, meta=meta)
