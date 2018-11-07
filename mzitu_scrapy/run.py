@@ -15,7 +15,7 @@ def run_way4():
     reactor.run()
 
 
-# sequentially 
+# sequentially
 def run_way5():
     from scrapy.crawler import CrawlerRunner
     from scrapy.utils.project import get_project_settings
