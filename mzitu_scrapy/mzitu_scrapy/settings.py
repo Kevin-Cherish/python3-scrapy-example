@@ -91,3 +91,8 @@ ITEM_PIPELINES = {
 IMAGES_STORE = 'mzitu/'
 IMAGES_EXPIRES = 30
 # LOG_ENABLED = False
+
+
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+REDIS_URL = 'redis://root:123456@47.93.197.254:6379'
