@@ -6,3 +6,5 @@
 - [简书](https://github.com/wkd-lidashuang/python3-scrapy-example/tree/master/jianshu)
 - [scrapy笔记](https://github.com/wkd-lidashuang/python3-scrapy-example/tree/master/scrapy-notos)
 - [微博](https://github.com/wkd-lidashuang/python3-scrapy-example/tree/master/weibo)
+- [腾讯招聘](https://github.com/wkd-lidashuang/python3-scrapy-example/tree/master/Tencent)
+
