@@ -8,7 +8,6 @@ class Spider(CrawlSpider):
     name = 'mzitu'
     allowed_domains = ['mzitu.com']
     start_urls = ['http://www.mzitu.com/']
-    img_urls = []
     rules = (
         Rule(LinkExtractor(allow=('http://www.mzitu.com/\d{1,6}',), deny=('http://www.mzitu.com/\d{1,6}/\d{1,6}')),
              callback='parse_item', follow=True),
@@ -39,10 +38,10 @@ class Spider(CrawlSpider):
         item = MzituScrapyItem()
         item['name'] = response.meta['name']
         item['url'] = response.meta['url']
-        img_urls = response.xpath("descendant::div[@class='main-image']/descendant::img/@src").extract()
-        for img_url in img_urls:
-            self.img_urls.append(img_url)
-        item['image_urls'] = self.img_urls
+        item['image_urls'] = response.xpath("descendant::div[@class='main-image']/descendant::img/@src").extract_first()
+        # for img_url in img_urls:
+        #     self.img_urls.append(img_url)
+        # item['image_urls'] = self.img_urls
         yield item
 
 

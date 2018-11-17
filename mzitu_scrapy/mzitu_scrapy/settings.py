@@ -95,4 +95,4 @@ LOG_LEVEL = 'WARNING'
 
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
-REDIS_URL = 'redis://root:123456@47.93.197.254:6379'
+REDIS_URL = 'redis://root:pass@hostname:6379'

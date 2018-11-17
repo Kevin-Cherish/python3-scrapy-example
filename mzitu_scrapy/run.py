@@ -31,3 +31,7 @@ def run_way5():
 
     crawl()
     reactor.run()
+
+
+if __name__ == '__main__':
+    run_way3()
