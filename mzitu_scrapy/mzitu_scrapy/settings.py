@@ -91,7 +91,7 @@ ITEM_PIPELINES = {
 IMAGES_STORE = 'mzitu/'
 IMAGES_EXPIRES = 30
 # LOG_ENABLED = False
-
+LOG_LEVEL = 'WARNING'
 
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"

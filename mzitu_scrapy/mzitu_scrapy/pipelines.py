@@ -7,7 +7,8 @@
 from scrapy import Request
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy.exceptions import DropItem
-
+import logging
+logger = logging.getLogger('filename')
 
 class MzituScrapyPipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None):
@@ -22,6 +23,7 @@ class MzituScrapyPipeline(ImagesPipeline):
         folder_strip = item['name']
         image_guid = request.url.split('/')[-1]
         filename = u'full/{0}/{1}'.format(folder_strip, image_guid)
+        logger.warning(filename)
         return filename
 
     def get_media_requests(self, item, info):
